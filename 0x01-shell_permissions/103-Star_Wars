@@ -1,2 +1,2 @@
 #!/bin/bash
-mpv vo=drm starwars_iv.mp4
+telnet towel.blinkenlights.nl StarWars IV
