@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo hello -user guillaume -exec chown betty {} +
+sudo hello -user betty -exec chown guillaume {} +
