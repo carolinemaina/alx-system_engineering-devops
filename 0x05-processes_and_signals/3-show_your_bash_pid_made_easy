@@ -7,7 +7,7 @@ for pid in /proc/[0-9]*/cmdline; do
         proc_name=$(tr -d '\0' < "$pid")
         if [[ "$proc_name" == *'bash'* ]]; then
             pid_num=$(echo "$pid" | awk -F'/' '{print $(NF-1)}')
-            echo "$pid_num $proc_name"
+            echo "$pid_num bash"
         fi
     fi
 done
