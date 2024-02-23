@@ -1,9 +1,11 @@
-#install flask 2.1.0 from pip3
+# Install package flask
 
-$flask_version = '2.1.0'
+package { 'python3-pip':
+  ensure => installed,
+}
 
 exec { 'install_flask':
-  command => "${::python3::executable} -m pip install Flask==${flask_version}",
-  path    => [$::python3::bin],
-  unless  => "${::python3::executable} -m pip show Flask | grep Version | grep -q ${flask_version}",
+  command => '/usr/bin/pip3 install Flask==2.1.0',
+  path    => '/usr/bin',
+  unless  => '/usr/bin/pip3 show Flask | grep -q "Version: 2.1.0"',
 }
