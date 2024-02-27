@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#configures a new Ubuntu machine to Install nginx on your server
+
+sudo apt-get update -y -qq && \
+	 sudo apt-get install nginx -y
+sudo service nginx start
+sudo ufw allow 80
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.html
+sudo service nginx restart

@@ -1,2 +1,3 @@
 Web servers
-1: a Bash script that transfers a file from our client to a server 
+0: a Bash script that transfers a file from our client to a server 
+1: configures a new Ubuntu machine to Install nginx on your server
