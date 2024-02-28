@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#debug apache server return a page containing Hello Holberton
+
+service apache2 start
