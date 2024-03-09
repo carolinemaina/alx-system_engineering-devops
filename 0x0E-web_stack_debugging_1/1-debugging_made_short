@@ -2,3 +2,4 @@
 #short and sweet way to fix nginx not listening on port 80
 
 ln -sl /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart && sleep 5 && service nginx stop
