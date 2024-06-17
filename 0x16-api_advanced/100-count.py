@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+"""prints a sorted count of given keywords"""
 import requests
 
 def count_words(subreddit, word_list, after=None, count={}):
