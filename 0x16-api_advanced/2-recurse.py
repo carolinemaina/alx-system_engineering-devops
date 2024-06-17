@@ -11,11 +11,8 @@ def recurse(subreddit, hot_list=[], after=None):
 
     if after:
         params["after"] = after
-    response = requests.get(url,
-        headers=headers,
-        params=params,
-        allow_redirects=False)
-
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
     if response.status_code == 404:
         return None  # Subreddit not found
     try:
