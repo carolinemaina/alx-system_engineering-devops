@@ -3,10 +3,9 @@
 This module contains a recursive function to count and print occurrences of
 keywords in hot article titles from a given subreddit using the Reddit API.
 """
-
-import requests
-import re
 from collections import Counter
+import re
+import requests
 
 
 def count_words(subreddit, word_list, hot_list=None, after=None):
@@ -34,7 +33,12 @@ def count_words(subreddit, word_list, hot_list=None, after=None):
                         hot_list.append(title.lower())
                     next_after = data.get('data', {}).get('after')
                     if next_after:
-                        return count_words(subreddit, word_list, hot_list, next_after)
+                        return count_words(
+                                subreddit,
+                                word_list,
+                                hot_list,
+                                next_after
+                                )
                     else:
                         return count_keywords(word_list, hot_list)
                 else:
@@ -44,14 +48,22 @@ def count_words(subreddit, word_list, hot_list=None, after=None):
         except requests.RequestException:
             return None
 
+
 def count_keywords(word_list, hot_list):
-    """Counts occurrences of each keyword in the hot_list and prints results."""
+    """Counts occurrences of each keyword in the
+    hot_list and prints results."""
     all_titles = ' '.join(hot_list)
     words = re.findall(r'\b\w+\b', all_titles)
     word_count = Counter(words)
     word_list = [word.lower() for word in word_list]
-    results = {word: word_count[word] for word in word_list if word in word_count}
-    sorted_results = sorted(results.items(), key=lambda item: (-item[1], item[0]))
+    results = {}
+    for word in word_list:
+        if word in word_count:
+            results[word] = word_count[word]
+    sorted_results = sorted(
+            results.items(),
+            key=lambda item: (-item[1], item[0])
+            )
 
     for word, count in sorted_results:
         print(f"{word}: {count}")
